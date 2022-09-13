@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 109359127}
   - component: {fileID: 109359126}
   - component: {fileID: 109359125}
+  - component: {fileID: 109359129}
   m_Layer: 0
   m_Name: Sphere (noRB)
   m_TagString: Draggable
@@ -175,7 +176,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2ae49727281954bc3bf9874da3c4d26b, type: 2}
+  - {fileID: 2100000, guid: 622875d59934248d0a56d0527532ca3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -220,6 +221,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &109359129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 109359124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05bd7a3c5dc0d49c4973a5ff0f3ccae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &624235402
 GameObject:
   m_ObjectHideFlags: 0
