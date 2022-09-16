@@ -6,16 +6,16 @@ public class SphereController : MonoBehaviour, IDrag //inherit from our interfac
     [SerializeField]
     private Rigidbody rb; //ref RigidBody on attached object
 
-    private Renderer objectRenderer; //name variable for objectRenderer
-    //private SpriteRenderer spriteRenderer; //name variable for spriteRenderer
-    private Color objectColor; //name variable for objectColor
+    //private Renderer objectRenderer; //name variable for objectRenderer
+    ////private SpriteRenderer spriteRenderer; //name variable for spriteRenderer
+    //private Color objectColor; //name variable for objectColor
 
     private void Awake()
     {
         if(GetComponent<Rigidbody>())
         rb = GetComponent<Rigidbody>(); //get RigidBody if there is a RigidBody Component on the Object
-        objectRenderer = GetComponent<Renderer>(); //get Renderer Component (for 3D)
 
+        //objectRenderer = GetComponent<Renderer>(); //get Renderer Component (for 3D)
         //if (spriteRenderer) spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -40,10 +40,12 @@ public class SphereController : MonoBehaviour, IDrag //inherit from our interfac
             //WHERE I LEFT OFF
             //CHECK IF OBJECT IS IN THE CORRECT PLACE, IF YES THEN OBJECT IS GREEN, IF NOT OBJECT IS RED
 
-        objectColor = new Color(255, 0, 0); //change color to red (1f,0,0 = 255,0,0)
 
-        //objectRenderer.material.SetColor("_Color", objectColor); //set new color to sphere (currently only working for 3D)
-        objectRenderer.material.color = objectColor; //set new color to sphere (currently only working for 3D
+        //MOVING THIS TO THE TRIGGER SCRIPT
+        //objectColor = new Color(255, 0, 0); //change color to red (1f,0,0 = 255,0,0)
+
+        ////objectRenderer.material.SetColor("_Color", objectColor); //set new color to sphere (currently only working for 3D)
+        //objectRenderer.material.color = objectColor; //set new color to sphere (currently only working for 3D
                                                      //ISSUE 2D sprite turns black...
 
         //if (spriteRenderer) spriteRenderer.color = objectColor; 
