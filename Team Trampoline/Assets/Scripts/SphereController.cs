@@ -31,7 +31,7 @@ public class SphereController : MonoBehaviour, IDrag //inherit from our interfac
         //throw new System.NotImplementedException();
         if (rb != null)
         {
-            rb.useGravity = true; //reinstate gravity when done dragging
+            //rb.useGravity = true; //reinstate gravity when done dragging
             rb.velocity = Vector3.zero; //object will drop straight down when dropped
                 //WHY IS THIS NOT WORKING ANYMORE? 
         }

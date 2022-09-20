@@ -9,7 +9,7 @@ public class ObjectPlacementDetection : MonoBehaviour
 
 
     //Color Changing Relevant Variables
-    private Renderer objectRenderer; //name variable for objectRenderer
+    public Renderer objectRenderer; //name variable for objectRenderer
     //private SpriteRenderer spriteRenderer; //name variable for spriteRenderer
     private Color originalColor; //name variable for object's original color
     private Color correctColor = Color.green; //name and set variable for correctColor to green
@@ -17,7 +17,7 @@ public class ObjectPlacementDetection : MonoBehaviour
 
     private void Awake()
     {
-        objectRenderer = GetComponent<Renderer>();
+        //objectRenderer = GetComponent<Renderer>();
     }
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,9 @@ public class ObjectPlacementDetection : MonoBehaviour
 
             //objectRenderer.material.SetColor("_Color", objectColor); //set new color to sphere (currently only working for 3D)
             objectRenderer.material.color = correctColor; //set new color to sphere (currently only working for 3D
-                                                         //ISSUE 2D sprite turns black...
+                                                          //ISSUE 2D sprite turns black...
+            print("this is the correct object placement");
+                //every object is reading as the correct object right now. 
         }
 
         //WHERE I LEFT OFF:
@@ -48,7 +50,9 @@ public class ObjectPlacementDetection : MonoBehaviour
             //2. Changing the color of the Trigger, not the placed object. 
         else
         {
+            //this needs to be for every object other than the correct one...should this be a tag situation?
             objectRenderer.material.color = incorrectColor; //set material color of object to red
+            print("this is not the correct object to put here");
         }
     }
 
