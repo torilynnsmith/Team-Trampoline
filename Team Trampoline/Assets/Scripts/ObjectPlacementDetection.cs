@@ -4,33 +4,33 @@ using UnityEngine;
 
 public class ObjectPlacementDetection : MonoBehaviour
 {
+    //TO DO:
+        //particle effect on correct placement
+        //sound effect on correct placement
+
     //Trigger Relevant Variables
-    //public GameObject correctObject; //set correct object to be placed in Trigger Area in Inspector
-    //changed to correctObject (correctTrigger)
+    public GameObject[] validObjects; //an array in editor, can dynamically change what is correct in this list
+        //originally used public GameObject correct Object, but this allows for the placement of multiple objects in a "correct space"
+        //HOWEVER, we'll have to pull the original material for each object in order to really make this work.
 
-    public GameObject[] validObjects; //an array in editor, can dynamically change what is correct in this liss
-
-
-    //Color Changing Relevant Variables
+    //Color/Material Changing Relevant Variables
     public Renderer objectRenderer; //name variable for objectRenderer
-    //private SpriteRenderer spriteRenderer; //name variable for spriteRenderer
-    private Color originalColor; //name variable for object's original color
-    private Color correctColor = Color.green; //name and set variable for correctColor to green
-    private Color incorrectColor = Color.red; //name and set variable for incorrectColor to red
+    public Material mat1; //original material color,
+                          //TO DO: change later to be back to original material
+    public Material mat2; //green, correct placement
+
 
     public bool validName; 
 
-    int correctTriggerID;
-
     private void Awake()
     {
-        //objectRenderer = GetComponent<Renderer>();
-        //correctTriggerID = correctObject.GetInstanceID(); 
+       
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        originalColor = objectRenderer.material.color;
+        
     }
 
     // Update is called once per frame
@@ -39,10 +39,8 @@ public class ObjectPlacementDetection : MonoBehaviour
 
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        //if (other.GetName() find in List = True)
-        //return valid trigger
         string[] targets = NameList(validObjects); //will return valid strings we've set for this collider
         validName = false; //set validName bool to false
 
@@ -57,34 +55,27 @@ public class ObjectPlacementDetection : MonoBehaviour
 
         if (validName)
         {
+            objectRenderer.material = mat2; //change material to Green
+
             //correctColor = new Color(0, 255, 0); //change color to green (0,255,0)
             //red (1f,0,0 = 255,0,0)
 
             //objectRenderer.material.SetColor("_Color", objectColor); //set new color to sphere (currently only working for 3D)
-            objectRenderer.material.color = correctColor; //set new color to sphere (currently only working for 3D
+            //objectRenderer.material.color = correctColor; //set new color to sphere (currently only working for 3D
                                                           //ISSUE 2D sprite turns black...
+                //IDEA: what if we specify the game object and then pull the material from that? like GameObjectVariable.material.color
+                    //coolGo.GetComponent<MeshRenderer>().material DO THIS
+                //also, what if instead of changing the color, we just change the material? probably simpler that way?
             Debug.Log("this is the correct object placement");
             //every object is reading as the correct object right now. 
         }
-
-        else
-        {
-            //this needs to be for every object other than the correct one...should this be a tag situation?
-            objectRenderer.material.color = incorrectColor; //set material color of object to red
-            Debug.Log("this is not the correct object to put here");
-        }
-
-        //Debug.Log("otherID:" + other.GetInstanceID());
-        //Debug.Log("correctID:" + correctTriggerID);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //WHERE WE LEFT OFF: we might want to check the name of the exiting collider
-        //fix renderer and color changing aspects
-
         validName = false; //set bool validName to false
-        objectRenderer.material.color = originalColor;
+        //objectRenderer.material.color = originalColor;
+        objectRenderer.material = mat1;
     }
 
     string[] NameList(GameObject[] myObjects)
