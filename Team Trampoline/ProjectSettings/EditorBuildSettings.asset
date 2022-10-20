@@ -5,7 +5,13 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/TutorialFiles/EvilLair/EvilLair.unity
     guid: dc8576d38512d4e3b91bb12e360ebbd6
+  - enabled: 0
+    path: Assets/Scenes/Marcy's Tinker Space.unity
+    guid: ba4eba3585cb54d528c1a1d0bf5625ce
+  - enabled: 1
+    path: Assets/Scenes/Drag & Drop Prototype.unity
+    guid: d06fc0755296e4a11b3476d0cd4d1b1e
   m_configObjects: {}
