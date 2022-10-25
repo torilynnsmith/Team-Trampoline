@@ -6,7 +6,10 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     //timer tutorial https://www.youtube.com/watch?v=27uKJvOpdYw
-    private float timeDuration = 3f * 60;
+    private float timeDuration = 1f * 60; //3minuts
+
+    [SerializeField]
+    private bool countDown = true; //allows us to change the timer from a count"down" to a count"up to". 
 
     private float timer;
 
@@ -21,6 +24,9 @@ public class Timer : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI secondSecond; //first slot for minutes
 
+    private float flashTimer;
+    private float flashDuration = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +37,16 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer > 0) //if the Timer amount is greater than 0, then...
+        if(countDown && timer > 0) //if the Timer amount is greater than 0, then...
         { 
-            timer -= Time.deltaTime; //subtract amount of time that's elapsed between frames
+            timer -= Time.deltaTime; //SUBTRACT amount of time that's elapsed between frames
             UpdateTimerDisplay(timer); //update the timer display with the new Time amount
             //Debug.Log("timer display ran");
+        }
+        else if(!countDown && timer < timeDuration)
+        {
+            timer += Time.deltaTime; //ADD amount of time that's elapsed between frames
+            UpdateTimerDisplay(timer); //update the timer display with the new Time amount
         }
         else
         {
@@ -45,8 +56,15 @@ public class Timer : MonoBehaviour
 
     private void ResetTimer()
     {
-        timer = timeDuration; //reset the timer to original amount of time
-
+        if(countDown) //if a count down...
+        {
+            timer = timeDuration; //reset the timer to original amount of time
+        }
+        else //if a count-up...
+        {
+            timer = 0; 
+        }
+        SetTextDisplay(true);
     }
 
     private void UpdateTimerDisplay (float time)
@@ -67,6 +85,41 @@ public class Timer : MonoBehaviour
 
     private void Flash()
     {
+        if(countDown && timer != 0) //if countDown is checked 
+        {
+            timer = 0;
+            UpdateTimerDisplay(timer);
+        }
 
+        if (!countDown && timer != timeDuration) //if countDown is NOT checked 
+        {
+            timer = 0;
+            UpdateTimerDisplay(timer);
+        }
+
+        if (flashTimer <= 0)
+        {
+            flashTimer = flashDuration;
+
+        }
+        else if(flashTimer >= flashDuration/2)
+        {
+            flashTimer -= Time.deltaTime;
+            SetTextDisplay(false); //turn display off
+        }
+        else
+        {
+            flashTimer -= Time.deltaTime;
+            SetTextDisplay(true); //turn display on
+        }
+    }
+
+    private void SetTextDisplay(bool enabled)
+    {
+        firstMinute.enabled = enabled;
+        secondMinute.enabled = enabled;
+        separator.enabled = enabled;
+        firstSecond.enabled = enabled;
+        secondSecond.enabled = enabled;
     }
 }
