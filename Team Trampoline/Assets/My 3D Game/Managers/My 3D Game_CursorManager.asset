@@ -25,10 +25,10 @@ MonoBehaviour:
   walkPrefix:
     label: Walk to
     lineID: -1
-  addHotspotPrefix: 0
-  allowInteractionCursor: 0
+  addHotspotPrefix: 1
+  allowInteractionCursor: 1
   allowInteractionCursorForInventory: 0
-  cycleCursors: 0
+  cycleCursors: 1
   onlyAnimateOverHotspots: 0
   leftClickExamine: 0
   onlyWalkWhenOverNavMesh: 0
@@ -166,11 +166,14 @@ MonoBehaviour:
     label: Look at
     lineID: -1
     id: 2
-  unhandledCursorInteractions: []
+  unhandledCursorInteractions:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   passUnhandledHotspotAsParameter: 0
   onlyShowCursorLabelOverHotspots: 0
   allowCursorCyclingWhenPaused: 0
-  lookUseCursorAction: 0
+  lookUseCursorAction: 1
   lookCursor_ID: 2
   hideCursorWhenDraggingMoveables: 1
   forceCursorInEditor: 1

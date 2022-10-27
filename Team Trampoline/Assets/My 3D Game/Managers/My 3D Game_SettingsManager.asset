@@ -37,12 +37,12 @@ MonoBehaviour:
   actionListOnStart: {fileID: 0}
   blackOutWhenSkipping: 0
   playerSwitching: 1
-  player: {fileID: 0}
+  player: {fileID: 385679218537552190, guid: 1d7a8e3151423472ebca30095d58f767, type: 3}
   players: []
   movementMethod: 1
   inputMethod: 0
   simulatedCursorMoveSpeed: 4
-  interactionMethod: 0
+  interactionMethod: 2
   selectInteractions: 0
   autoHideInteractionIcons: 1
   cancelInteractions: 0
@@ -167,7 +167,7 @@ MonoBehaviour:
   highlightMaterialPropertyOverride: 
   disableHotspotsWhileDraggingPlayer: 1
   hotspotIconSize: 0.04
-  playerFacesHotspots: 0
+  playerFacesHotspots: 1
   onlyFaceHotspotOnSelect: 0
   scaleHighlightWithMouseProximity: 0
   highlightProximityFactor: 4
